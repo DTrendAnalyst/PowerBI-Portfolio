@@ -45,6 +45,6 @@ Dashboard Design
 
 ## Contact
 
-LinkedIn (Coming Soon)
+LinkedIn -https://www.linkedin.com/in/djsgreyes/
 
 Email

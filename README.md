@@ -45,6 +45,6 @@ Dashboard Design
 
 ## Contact
 
-LinkedIn -https://www.linkedin.com/in/djsgreyes/
+LinkedIn - https://www.linkedin.com/in/djsgreyes/
 
-Email
+Email - dennis.john.sg.reyes@gmail.com

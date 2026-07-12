@@ -1,5 +1,7 @@
 # Project 05: HR Analytics & Workforce Readiness Logistics
 
+![HR Dashboard Showcase](./Project-05-HR.jpg)
+
 ## 📄 Business Scenario
 Maintaining operational delivery targets requires deep insight into organizational capacity. This project tracks human resources metrics, evaluating current workforce strength, identifying regional personnel distribution, and monitoring turnover risks that threaten client milestones.
 

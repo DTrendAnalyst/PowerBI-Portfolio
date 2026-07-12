@@ -1,0 +1,115 @@
+table staging_hr_workforce
+	lineageTag: e8b61880-7981-4fb0-b567-cc93ada3bacc
+
+	measure 'Active Headcount' =
+			
+			CALCULATE(
+			    COUNT(staging_hr_workforce[employee_id]),
+			    staging_hr_workforce[status] = "Active"
+			)
+		formatString: 0
+		lineageTag: ff80875d-bcc1-46fe-ad52-c9cf785d7e78
+
+	measure 'Total Separated' =
+			
+			CALCULATE(
+			    COUNT(staging_hr_workforce[employee_id]),
+			    staging_hr_workforce[status] = "Terminated"
+			)
+		formatString: 0
+		lineageTag: cbd2c650-8c51-4fc0-a69c-35ccf2541841
+
+	measure 'Attrition Rate %' =
+			
+			VAR Separated = [Total Separated]
+			VAR ActiveHC = [Active Headcount]
+			RETURN
+			    DIVIDE(Separated, ActiveHC + Separated, 0)
+		formatString: 0%;-0%;0%
+		lineageTag: b85cb141-bf12-4c9e-9801-013087d272cb
+
+	column employee_id
+		dataType: string
+		lineageTag: 2ab6f744-5a26-4121-9bcf-94e9cbf66922
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_name
+		dataType: string
+		lineageTag: 2ed77c3d-9069-4fe1-9d37-9984c4fb2122
+		summarizeBy: none
+		sourceColumn: employee_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: a139203f-1179-4f7a-a58f-69f2e8f9f4c8
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: d10f6cf9-82a6-4138-9507-5d8ceb808e8c
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 2e779ed0-fd16-4a26-8d13-ad06905fbcd4
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column hire_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 41744851-c7ad-4fa3-89c9-5d9f7af915ed
+		summarizeBy: none
+		sourceColumn: hire_date
+
+		variation Variation
+			isDefault
+			relationship: 487817d4-9deb-43e0-b43e-6b73e63a87b7
+			defaultHierarchy: LocalDateTable_3cc2b428-71c9-49bc-a0b4-3f2b5729c6cb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column termination_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 17ece3b6-b9a7-4133-bec0-7154101b8dae
+		summarizeBy: none
+		sourceColumn: termination_date
+
+		variation Variation
+			isDefault
+			relationship: a39f6fdb-582e-4a60-a6f0-7786b3e086cc
+			defaultHierarchy: LocalDateTable_2a064177-5e32-4745-88e2-1ae8f5d348dd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition staging_hr_workforce = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    staging_hr_workforce_Table = public_Schema{[Name="staging_hr_workforce",Kind="Table"]}[Data]
+				in
+				    staging_hr_workforce_Table
+
+	annotation PBI_ResultType = Table
+

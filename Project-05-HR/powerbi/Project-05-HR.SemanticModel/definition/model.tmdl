@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["staging_hr_workforce"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table staging_hr_workforce
+ref table DateTableTemplate_52ee81e7-5837-45de-9c18-da9e58707f86
+ref table LocalDateTable_3cc2b428-71c9-49bc-a0b4-3f2b5729c6cb
+ref table LocalDateTable_2a064177-5e32-4745-88e2-1ae8f5d348dd
+
+ref cultureInfo en-US
+

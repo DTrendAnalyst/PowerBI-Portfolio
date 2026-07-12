@@ -1,0 +1,10 @@
+relationship 487817d4-9deb-43e0-b43e-6b73e63a87b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: staging_hr_workforce.hire_date
+	toColumn: LocalDateTable_3cc2b428-71c9-49bc-a0b4-3f2b5729c6cb.Date
+
+relationship a39f6fdb-582e-4a60-a6f0-7786b3e086cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: staging_hr_workforce.termination_date
+	toColumn: LocalDateTable_2a064177-5e32-4745-88e2-1ae8f5d348dd.Date
+

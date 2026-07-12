@@ -1,5 +1,7 @@
 # Project 01: Executive Sales Dashboard
 
+![NOC Dashboard Showcase](./Project-01-Executive-Sales.jpg)
+
 ## 📄 Business Scenario
 Corporate executives require clear visibility into high-level financial health to drive strategic decisions. This project addresses the challenge of transforming raw transactional sales records into scannable executive insights, focusing on revenue trajectories, profit margins, and regional performance.
 

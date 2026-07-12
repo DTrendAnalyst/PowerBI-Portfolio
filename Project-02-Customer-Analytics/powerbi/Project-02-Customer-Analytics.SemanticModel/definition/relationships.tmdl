@@ -1,0 +1,13 @@
+relationship AutoDetected_1eb2cc57-a8f7-4767-b779-8dab70dfd2c0
+	fromColumn: fact_sales.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship AutoDetected_195eaca1-62cb-4c68-a316-d785b67c9c39
+	fromColumn: fact_sales.product_id
+	toColumn: dim_product.product_id
+
+relationship 31825e1b-d7d4-4085-8b84-0830a7403b48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_sales.order_date
+	toColumn: LocalDateTable_dbb9fda3-2dd5-48c5-8eba-41efcf52c084.Date
+

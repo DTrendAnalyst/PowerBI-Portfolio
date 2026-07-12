@@ -1,0 +1,97 @@
+table '_All Measures'
+	lineageTag: dbc2cf94-5282-4cc9-b671-14b4b18b934c
+
+	measure 'Total Revenue' = SUM(fact_sales[sales])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 13e8c759-810a-4a06-8ccd-31b1b58d554a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Profit' = SUM(fact_sales[profit])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: dbbe4089-65ad-48e9-9dc2-f74f3c7f5657
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Profit Margin %' = DIVIDE([Total Profit], [Total Revenue], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 45b6cfeb-3b85-4b73-a939-b3e793ba2ef6
+
+	measure 'Active Customers' = DISTINCTCOUNT(fact_sales[customer_id])
+		formatString: 0
+		lineageTag: 7deadcb5-1db0-487e-be85-b11c003d07b4
+
+	measure 'Average Revenue Per Customer' =
+			
+			DIVIDE([Total Revenue], [Active Customers], 0)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 931f7082-80ed-4bae-9758-039fafcbaddb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Is High Value Customer' = ```
+			
+			IF(
+			    ISINSCOPE(dim_customer[customer_name]),
+			    VAR AvgSalesPerCustomer = 
+			        AVERAGEX(
+			            VALUES(dim_customer[customer_id]), 
+			            [Total Revenue]
+			        )
+			    VAR CurrentCustomerSales = [Total Revenue]
+			    RETURN
+			        IF(CurrentCustomerSales > AvgSalesPerCustomer, "High Value", "Standard"),
+			    BLANK()
+			)
+			```
+		lineageTag: 200e203a-e1e5-4b39-b5f8-59dfa923e13e
+
+	measure 'Returning Customers' =
+			
+			VAR TotalActive = [Active Customers]
+			VAR NewCust = [New Customers]
+			RETURN
+			    IF(ISBLANK(NewCust), TotalActive, TotalActive - NewCust)
+		formatString: 0
+		lineageTag: cbda7f89-690e-4b58-8438-f394c13594a9
+
+	measure 'New Customers' = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES(fact_sales[customer_id]),
+			        VAR FirstPurchaseDate = 
+			            CALCULATE(
+			                MIN(fact_sales[order_date]),
+			                ALLEXCEPT(fact_sales, fact_sales[customer_id])
+			            )
+			        RETURN
+			            CALCULATE(
+			                COUNTROWS(fact_sales),
+			                fact_sales[order_date] = FirstPurchaseDate
+			            ) > 0
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 3ec8e81e-5f82-4cd0-ae2d-437c6fb9812a
+
+	column Column1
+		dataType: string
+		lineageTag: 4d5609c8-4069-4e04-8c87-4dce43b02e04
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_All Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

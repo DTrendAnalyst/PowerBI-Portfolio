@@ -1,0 +1,38 @@
+table dim_customer
+	lineageTag: 99c0d3bb-13be-4ddd-97e9-f4d7b3a7cc05
+
+	column customer_id
+		dataType: string
+		lineageTag: c4036841-f312-4ab6-8dcf-9f7f447b60af
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 71fdfd5b-557e-42a9-b220-074e6301b508
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 9503b742-bb88-49dc-b572-9dc5be7df81a
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    dim_customer_Table = public_Schema{[Name="dim_customer",Kind="Table"]}[Data]
+				in
+				    dim_customer_Table
+

@@ -1,0 +1,161 @@
+table fact_sales
+	lineageTag: 001ed377-a803-431d-adf4-68bf297d48ec
+
+	column row_id
+		dataType: string
+		lineageTag: c369b276-134c-4796-b1f4-36594904bd25
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: dc58af32-dc32-4830-862a-fb4a49995fd5
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0936e640-a0f2-4e05-ae1e-7dd20a8185af
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 31825e1b-d7d4-4085-8b84-0830a7403b48
+			defaultHierarchy: LocalDateTable_dbb9fda3-2dd5-48c5-8eba-41efcf52c084.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ship_date
+		dataType: string
+		lineageTag: e94e67db-73f3-4371-94e4-924cccd84fb9
+		summarizeBy: none
+		sourceColumn: ship_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_mode
+		dataType: string
+		lineageTag: 4fcb551d-8aa4-4e0d-88b2-3fac0d133ba3
+		summarizeBy: none
+		sourceColumn: ship_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: cd129536-2a5f-494c-a898-82980e5c65e4
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: ea213e76-59a1-409a-8829-5aecebc76931
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		lineageTag: 228089ab-c68d-464a-afe7-6ce0f53a4cd9
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales
+		dataType: double
+		lineageTag: 227ac495-1bb3-47d2-ad05-9ab33bf7a501
+		summarizeBy: sum
+		sourceColumn: sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity
+		dataType: string
+		lineageTag: 7fcf1b8d-20d7-4830-a5f5-3034e6fa3221
+		summarizeBy: none
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount
+		dataType: string
+		lineageTag: ad8f45cc-a9b8-4b26-ac8e-7d66a2de37f2
+		summarizeBy: none
+		sourceColumn: discount
+
+		annotation SummarizationSetBy = Automatic
+
+	column profit
+		dataType: double
+		lineageTag: 95de5ad4-e692-4a56-b4d2-acf73b606127
+		summarizeBy: sum
+		sourceColumn: profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shipping_cost
+		dataType: string
+		lineageTag: 5550ae2a-f32a-40b2-90fd-292b4714f7b8
+		summarizeBy: none
+		sourceColumn: shipping_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_priority
+		dataType: string
+		lineageTag: 496fb9bf-f5cc-41db-be24-26a50873d136
+		summarizeBy: none
+		sourceColumn: order_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: fedb3062-78e2-4cce-9eb6-836d80ff1ebb
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 65d6f7d2-ce2a-4935-a898-e09403f31b55
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sales = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    fact_sales_Table = public_Schema{[Name="fact_sales",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(fact_sales_Table,{{"sales", type number}, {"profit", type number}, {"order_date", type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"customer_id"}, stg_superstore, {"customer_id"}, "stg_superstore", JoinKind.LeftOuter),
+				    #"Expanded stg_superstore" = Table.ExpandTableColumn(#"Merged Queries", "stg_superstore", {"region", "market"}, {"region", "market"})
+				in
+				    #"Expanded stg_superstore"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,5 +1,7 @@
 # Project 02: Customer Behavior Analytics
 
+![NOC Dashboard Showcase](./Project-02-Customer-Analytics.jpg)
+
 ## 📄 Business Scenario
 Relying solely on gross sales masks critical shifts in consumer behavior. This project moves beyond standard database aggregations to deliver behavioral intelligence, evaluating how effectively the business is acquiring new accounts versus retaining high-value historical cohorts.
 

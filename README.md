@@ -43,6 +43,6 @@ Dashboard Design
 
 ## Contact
 
-LinkedIn - https://www.linkedin.com/in/djsgreyes/
+LinkedIn - *   [💼 Optimize Your Network on LinkedIn] (https://www.linkedin.com/in/djsgreyes/)
 
 Email - dennis.john.sg.reyes@gmail.com

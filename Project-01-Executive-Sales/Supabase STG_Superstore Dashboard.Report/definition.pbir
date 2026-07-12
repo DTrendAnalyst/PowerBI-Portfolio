@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Supabase STG_Superstore Dashboard.SemanticModel"
+    }
+  }
+}

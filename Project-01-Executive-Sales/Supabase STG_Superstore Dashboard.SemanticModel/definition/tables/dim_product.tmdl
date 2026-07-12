@@ -1,0 +1,46 @@
+table dim_product
+	lineageTag: c9fb0027-a33c-455b-8722-a6225d1dba41
+
+	column product_id
+		dataType: string
+		lineageTag: 6a0b815e-044d-4ce4-97ef-35580ce2c158
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 2f2e793a-ea56-4365-958f-9e395b5079a8
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_category
+		dataType: string
+		lineageTag: d6e31cde-000f-48b9-9cd3-fcc3e9259b69
+		summarizeBy: none
+		sourceColumn: sub_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: f0b2233f-970a-4573-8ddd-50ed38f0577b
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    dim_product_Table = public_Schema{[Name="dim_product",Kind="Table"]}[Data]
+				in
+				    dim_product_Table
+

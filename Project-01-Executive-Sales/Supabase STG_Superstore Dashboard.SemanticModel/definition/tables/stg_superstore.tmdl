@@ -1,0 +1,283 @@
+table stg_superstore
+	isHidden
+	lineageTag: 5cf27feb-30ed-4af0-ba3f-acfa074c6b70
+
+	column row_id
+		dataType: string
+		isHidden
+		lineageTag: 1097c7da-cb70-4451-926e-a1aefde8b49a
+		summarizeBy: none
+		sourceColumn: row_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		isHidden
+		lineageTag: 28b5bb52-211d-4d1a-90ab-531b21ac0382
+		summarizeBy: none
+		sourceColumn: order_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: string
+		isHidden
+		lineageTag: 8fb5791b-dd42-4101-a2fd-8b6271f2b574
+		summarizeBy: none
+		sourceColumn: order_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_date
+		dataType: string
+		isHidden
+		lineageTag: a45c532a-88db-4ea8-94ef-eeadea73e10c
+		summarizeBy: none
+		sourceColumn: ship_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_mode
+		dataType: string
+		isHidden
+		lineageTag: bbf600db-9054-4dee-8e86-7559f33b8d82
+		summarizeBy: none
+		sourceColumn: ship_mode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		isHidden
+		lineageTag: 928a9dd2-5c4c-4679-b34b-39665c45e0be
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		isHidden
+		lineageTag: be8d5a23-5de5-4501-9341-367d72aad65b
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		isHidden
+		lineageTag: b0098a5c-e08b-4e2b-9676-7d691c54bd8b
+		summarizeBy: none
+		sourceColumn: segment
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		isHidden
+		lineageTag: c0f0fbe0-b1e3-4ba9-a998-5d92633fdd50
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		isHidden
+		lineageTag: 6f9ab0da-e342-40b7-a93a-4587ec55a8eb
+		summarizeBy: none
+		sourceColumn: city
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		isHidden
+		lineageTag: 53bf7e96-eaff-45cf-adf9-2800331c5031
+		summarizeBy: none
+		sourceColumn: state
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		isHidden
+		lineageTag: acf6cd92-7481-4947-a789-16d2f5571f22
+		summarizeBy: none
+		sourceColumn: country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		isHidden
+		lineageTag: 7a444f0d-709d-4985-b5e0-79d82abc425a
+		summarizeBy: none
+		sourceColumn: region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		isHidden
+		lineageTag: 1528b74f-0a50-4621-ab64-7b7397e8c6db
+		summarizeBy: none
+		sourceColumn: market
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: acb31c43-c56d-4a46-b658-9d9f3e921136
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		isHidden
+		lineageTag: df16e419-27f8-4a77-8661-262216fede7b
+		summarizeBy: none
+		sourceColumn: category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_category
+		dataType: string
+		isHidden
+		lineageTag: ec8350c5-85a0-4cd4-98cc-313d1e463400
+		summarizeBy: none
+		sourceColumn: sub_category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		isHidden
+		lineageTag: 0d45a1d9-3420-4728-a9c0-668630824a71
+		summarizeBy: none
+		sourceColumn: product_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales
+		dataType: string
+		isHidden
+		lineageTag: 914df41e-429f-4d12-ad1f-c005e423d0bb
+		summarizeBy: none
+		sourceColumn: sales
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: string
+		isHidden
+		lineageTag: edb80450-7cfc-4a72-a303-8c6c6dbb9805
+		summarizeBy: none
+		sourceColumn: quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount
+		dataType: string
+		isHidden
+		lineageTag: 3f91a6f9-b95b-428e-a9da-6771b3674d40
+		summarizeBy: none
+		sourceColumn: discount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column profit
+		dataType: string
+		isHidden
+		lineageTag: 36ab4492-c3dd-4d67-b2c7-f2a8f0a86c4a
+		summarizeBy: none
+		sourceColumn: profit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_cost
+		dataType: string
+		isHidden
+		lineageTag: bca78735-4180-4026-b2f3-f929e817f1dc
+		summarizeBy: none
+		sourceColumn: shipping_cost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_priority
+		dataType: string
+		isHidden
+		lineageTag: 34624c93-8743-4a34-96d3-93b93c09ba5e
+		summarizeBy: none
+		sourceColumn: order_priority
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition stg_superstore = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    stg_superstore_Table = public_Schema{[Name="stg_superstore",Kind="Table"]}[Data]
+				in
+				    stg_superstore_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

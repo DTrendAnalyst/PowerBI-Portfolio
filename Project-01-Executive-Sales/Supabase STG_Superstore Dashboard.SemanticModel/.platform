@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Supabase STG_Superstore Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8dd2cce7-dbdd-4a4c-b436-4dc2f7deab8c"
+  }
+}

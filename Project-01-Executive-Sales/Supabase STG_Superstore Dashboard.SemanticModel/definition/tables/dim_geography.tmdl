@@ -1,0 +1,62 @@
+table dim_geography
+	lineageTag: b12a83db-f67c-4041-a41c-cd8ffcb30d4b
+
+	column postal_code
+		dataType: string
+		lineageTag: c0b9a578-4e74-4a81-ae9d-35232d7b8e77
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: c01a27f7-1c26-4ae9-a73f-9598e283640d
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: bdfc1330-1cb2-479a-ae35-4d9366163218
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 7ee80bf1-514d-4e70-a007-0bdd2349688f
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: b5a99662-bab8-44f6-862c-8838ced11e84
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 7d8cd439-0179-4ed4-903c-712474510b90
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_geography = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    dim_geography_Table = public_Schema{[Name="dim_geography",Kind="Table"]}[Data]
+				in
+				    dim_geography_Table
+

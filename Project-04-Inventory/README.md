@@ -1,5 +1,7 @@
 # Project 04: Supply Chain & Inventory Control
 
+![NOC Dashboard Showcase](./Project-04-Inventory.jpg)
+
 ## 📄 Business Scenario
 Improper warehouse management traps vital working capital in dead stock or exposes the business to severe out-of-stock deficits. This project implements logistical guardrails to track on-hand counts, monitor lead times, and optimize replenishment cycles.
 

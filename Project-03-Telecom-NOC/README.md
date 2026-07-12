@@ -1,5 +1,7 @@
 # Project 03: Telecom Network Operations Center (NOC) Dashboard
 
+![NOC Dashboard Showcase](./Project-03-Telecom-NOC.jpg)
+
 ## 📄 Business Scenario
 In telecommunications operations, network availability directly impacts client retention. Managing operational performance requires tracking incident volumes, response velocities, and contract penalties resulting from Service Level Agreement (SLA) breaches across major telecom portfolios (including PTCI, FTAP, LDIC, and Edgepoint).
 

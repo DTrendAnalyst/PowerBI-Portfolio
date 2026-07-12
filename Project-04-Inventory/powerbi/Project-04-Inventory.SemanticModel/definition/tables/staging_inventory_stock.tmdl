@@ -1,0 +1,103 @@
+table staging_inventory_stock
+	lineageTag: 457bfa40-22a2-454a-8f59-a8a9036be370
+
+	measure 'Total On-Hand Stock' = SUM(staging_inventory_stock[current_stock])
+		formatString: 0
+		lineageTag: 09a18789-b6d4-45f0-9bc9-bbc3879e1b5a
+
+	measure 'Reorder Point' = ```
+			
+			SUMX(
+			    staging_inventory_stock,
+			    (staging_inventory_stock[daily_lead_demand] * staging_inventory_stock[supplier_lead_time_days]) 
+			    + staging_inventory_stock[minimum_required_stock]
+			)
+			```
+		formatString: 0
+		lineageTag: d804fef9-4a61-4488-a84c-7de569e23919
+
+	measure 'Stock Alert Status' =
+			
+			IF(
+			    ISINSCOPE(staging_inventory_stock[product_name]),
+			    VAR OnHand = SUM(staging_inventory_stock[current_stock])
+			    VAR ROP = [Reorder Point]
+			    RETURN
+			        IF(OnHand <= ROP, "⚠️ REORDER NOW", "✅ Stock OK"),
+			    BLANK()
+			)
+		lineageTag: 11005282-0fce-4eb1-aebd-8407c813fddb
+
+	column product_id
+		dataType: string
+		lineageTag: 10b4f15a-fd4a-4b37-b993-d5d98c1ef66e
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 1b9307d4-3e37-44be-8275-b5e144d25f32
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 4edd3385-94b4-4a88-b406-47af4e909dcf
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_stock
+		dataType: int64
+		formatString: 0
+		lineageTag: e7ef5184-805e-4250-ac38-e0121224fbf0
+		summarizeBy: sum
+		sourceColumn: current_stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column minimum_required_stock
+		dataType: int64
+		formatString: 0
+		lineageTag: 1310c724-f0c9-43cb-b12d-18597573d5bf
+		summarizeBy: sum
+		sourceColumn: minimum_required_stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column daily_lead_demand
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ee3aa37-4800-40c2-ae32-78369ab4bd2d
+		summarizeBy: sum
+		sourceColumn: daily_lead_demand
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplier_lead_time_days
+		dataType: int64
+		formatString: 0
+		lineageTag: cd3d76e8-c585-48c7-ac10-2c95e1b1a367
+		summarizeBy: sum
+		sourceColumn: supplier_lead_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition staging_inventory_stock = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    staging_inventory_stock_Table = public_Schema{[Name="staging_inventory_stock",Kind="Table"]}[Data]
+				in
+				    staging_inventory_stock_Table
+
+	annotation PBI_ResultType = Table
+

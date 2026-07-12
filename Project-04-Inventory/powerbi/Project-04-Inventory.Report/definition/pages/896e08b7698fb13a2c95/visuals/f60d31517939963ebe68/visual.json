@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f60d31517939963ebe68",
+  "position": {
+    "x": 90.5663411447428,
+    "y": 109.77738320574885,
+    "z": 0,
+    "height": 183.8771168696293,
+    "width": 475,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_inventory_stock"
+                    }
+                  },
+                  "Property": "Total On-Hand Stock"
+                }
+              },
+              "queryRef": "staging_inventory_stock.Total On-Hand Stock",
+              "nativeQueryRef": "Total On-Hand Stock"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "staging_inventory_stock"
+                  }
+                },
+                "Property": "Total On-Hand Stock"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "36D"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ecd706dd3b38d958e494",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_inventory_stock"
+              }
+            },
+            "Property": "Total On-Hand Stock"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

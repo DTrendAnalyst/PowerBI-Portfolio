@@ -1,0 +1,330 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "2d151731ce16a0ac09e8",
+  "position": {
+    "x": 90.5663411447428,
+    "y": 332.07658419739028,
+    "z": 2,
+    "height": 262.09350240372538,
+    "width": 1097.7738320574886,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_inventory_stock"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "staging_inventory_stock.product_name",
+              "nativeQueryRef": "product_name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_inventory_stock"
+                    }
+                  },
+                  "Property": "Total On-Hand Stock"
+                }
+              },
+              "queryRef": "staging_inventory_stock.Total On-Hand Stock",
+              "nativeQueryRef": "Total On-Hand Stock"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_inventory_stock"
+                    }
+                  },
+                  "Property": "Reorder Point"
+                }
+              },
+              "queryRef": "staging_inventory_stock.Reorder Point",
+              "nativeQueryRef": "Reorder Point"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_inventory_stock"
+                    }
+                  },
+                  "Property": "Stock Alert Status"
+                }
+              },
+              "queryRef": "staging_inventory_stock.Stock Alert Status",
+              "nativeQueryRef": "Stock Alert Status"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "325.81656187257585D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.product_name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "232.07213169141224D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Total On-Hand Stock"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "228.18405936894882D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Reorder Point"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "268.0997160692378D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Stock Alert Status"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Total On-Hand Stock"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Reorder Point"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_inventory_stock.Stock Alert Status"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "68a9c36076c149ee678e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_inventory_stock"
+              }
+            },
+            "Property": "product_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bb753acf333b3d1e19c6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_inventory_stock"
+              }
+            },
+            "Property": "Total On-Hand Stock"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "afb1bd5be2f4bc4d7bff",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_inventory_stock"
+              }
+            },
+            "Property": "Reorder Point"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2806215e43a6a2fca03f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_inventory_stock"
+              }
+            },
+            "Property": "Stock Alert Status"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

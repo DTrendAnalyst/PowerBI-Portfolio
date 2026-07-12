@@ -13,8 +13,6 @@ Power BI Reporting Analyst specializing in:
 
 ## Featured Projects
 
-Coming Soon
-
 - Executive Sales Dashboard
 - Telecom Operations Dashboard
 - Customer Analytics Dashboard

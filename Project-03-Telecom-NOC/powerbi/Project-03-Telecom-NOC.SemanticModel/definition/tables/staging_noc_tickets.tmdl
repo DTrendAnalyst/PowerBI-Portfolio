@@ -1,0 +1,133 @@
+table staging_noc_tickets
+	lineageTag: ad3619e8-31ba-42af-a1da-851b293add1f
+
+	measure 'Total Tickets' = COUNT(staging_noc_tickets[ticket_id])
+		formatString: 0
+		lineageTag: 77730ca3-f321-4587-9c22-962900e839c0
+
+	measure 'MTTR (Hours)' =
+			
+			AVERAGEX(
+			    FILTER(staging_noc_tickets, NOT(ISBLANK(staging_noc_tickets[resolved_at]))),
+			    CONVERT(staging_noc_tickets[resolved_at] - staging_noc_tickets[created_at], DOUBLE) * 24
+			)
+		lineageTag: 18429811-54c8-4655-8768-73dc2b2902eb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'SLA Breach Rate %' = ```
+			
+			VAR TotalResolvedTickets = 
+			    COUNTROWS(FILTER(staging_noc_tickets, NOT(ISBLANK(staging_noc_tickets[resolved_at]))))
+			VAR BreachedTickets = 
+			    COUNTROWS(
+			        FILTER(
+			            staging_noc_tickets,
+			            VAR ActualDurationHours = CONVERT(staging_noc_tickets[resolved_at] - staging_noc_tickets[created_at], DOUBLE) * 24
+			            RETURN ActualDurationHours > staging_noc_tickets[sla_hours]
+			        )
+			    )
+			RETURN 
+			    DIVIDE(BreachedTickets, TotalResolvedTickets, 0)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 5c1b6164-3f0a-413a-aaed-f1ebb9cca562
+
+	column ticket_id
+		dataType: string
+		lineageTag: e83dbeba-cb61-4358-ab35-156744bc618a
+		summarizeBy: none
+		sourceColumn: ticket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column site_id
+		dataType: string
+		lineageTag: 5706acc5-8772-4fc4-b439-c0e4478c5247
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 374dfb63-f32f-446c-a1cb-3e13c3aaf49c
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_name
+		dataType: string
+		lineageTag: 484a6bd0-c396-47ec-b438-5fcd219ae16a
+		summarizeBy: none
+		sourceColumn: client_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column incident_type
+		dataType: string
+		lineageTag: a4ff8ba0-a12c-4fa3-83b0-07e23f59dc6e
+		summarizeBy: none
+		sourceColumn: incident_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: a0848bab-4f91-4ee6-9b06-4a0699820357
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 84e7a74a-09c4-4c25-b18f-ba3e21cecb55
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: 58e994b2-3c8d-414f-85ed-8673b1af703f
+			defaultHierarchy: LocalDateTable_c011a480-34cb-4a91-9d8b-9f731add7fff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolved_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d585e113-de7c-4d90-b439-6100380beac0
+		summarizeBy: none
+		sourceColumn: resolved_at
+
+		variation Variation
+			isDefault
+			relationship: 4fdf9c26-c439-4818-8367-8c332c301f19
+			defaultHierarchy: LocalDateTable_4d30a397-3133-40be-8652-7e702f2d21fa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_hours
+		dataType: int64
+		formatString: 0
+		lineageTag: c7885a83-3f4d-4707-b66e-7e0e3677372a
+		summarizeBy: sum
+		sourceColumn: sla_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	partition staging_noc_tickets = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=Supabase_Portfolio", [HierarchicalNavigation=true]),
+				    postgres_Database = Source{[Name="postgres",Kind="Database"]}[Data],
+				    public_Schema = postgres_Database{[Name="public",Kind="Schema"]}[Data],
+				    staging_noc_tickets_Table = public_Schema{[Name="staging_noc_tickets",Kind="Table"]}[Data]
+				in
+				    staging_noc_tickets_Table
+
+	annotation PBI_ResultType = Table
+

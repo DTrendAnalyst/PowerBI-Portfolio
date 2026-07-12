@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Project-03-Telecom-NOC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bb29600d-3d4b-45ba-a025-c409d402eb8d"
+  }
+}

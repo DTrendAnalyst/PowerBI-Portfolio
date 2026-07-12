@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Project-03-Telecom-NOC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4607d42e-adf5-454f-8095-5aef8c30f6cf"
+  }
+}

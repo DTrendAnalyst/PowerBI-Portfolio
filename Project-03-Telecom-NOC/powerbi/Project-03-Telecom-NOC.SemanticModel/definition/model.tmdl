@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["staging_noc_tickets"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table staging_noc_tickets
+ref table DateTableTemplate_3fcd4bef-ec97-4c44-839f-37927343d373
+ref table LocalDateTable_c011a480-34cb-4a91-9d8b-9f731add7fff
+ref table LocalDateTable_4d30a397-3133-40be-8652-7e702f2d21fa
+
+ref cultureInfo en-US
+

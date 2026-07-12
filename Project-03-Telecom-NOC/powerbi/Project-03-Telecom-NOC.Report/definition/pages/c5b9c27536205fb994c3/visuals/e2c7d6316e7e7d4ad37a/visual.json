@@ -1,0 +1,576 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "e2c7d6316e7e7d4ad37a",
+  "position": {
+    "x": 80.96082011423978,
+    "y": 345.79875709810887,
+    "z": 3,
+    "height": 212.6936799611384,
+    "width": 1121.1015259887101,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "severity"
+                }
+              },
+              "queryRef": "staging_noc_tickets.severity",
+              "nativeQueryRef": "severity",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "client_name"
+                }
+              },
+              "queryRef": "staging_noc_tickets.client_name",
+              "nativeQueryRef": "client_name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "Total Tickets"
+                }
+              },
+              "queryRef": "staging_noc_tickets.Total Tickets",
+              "nativeQueryRef": "Total Tickets"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "MTTR (Hours)"
+                }
+              },
+              "queryRef": "staging_noc_tickets.MTTR (Hours)",
+              "nativeQueryRef": "MTTR (Hours)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "SLA Breach Rate %"
+                }
+              },
+              "queryRef": "staging_noc_tickets.SLA Breach Rate %",
+              "nativeQueryRef": "SLA Breach Rate %"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "61.81122717618214D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Critical'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.MTTR (Hours)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "66.53339314224124D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Critical'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.Total Tickets"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "62.41673623527069D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Major'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.Total Tickets"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.41674111737859D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Major'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.MTTR (Hours)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.90560657253184D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Minor'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.Total Tickets"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.16117563506144D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "staging_noc_tickets"
+                          }
+                        },
+                        "Property": "severity"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Minor'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "staging_noc_tickets.MTTR (Hours)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "62.92787578229223D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "staging_noc_tickets"
+                        }
+                      },
+                      "Property": "severity"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "staging_noc_tickets.Total Tickets"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.81121961841907D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "staging_noc_tickets"
+                        }
+                      },
+                      "Property": "severity"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "staging_noc_tickets.MTTR (Hours)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_noc_tickets.Total Tickets"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_noc_tickets.MTTR (Hours)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "staging_noc_tickets.SLA Breach Rate %"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ContrastAlternatingRows'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f91adcdee4a6c65bcb71",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "client_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "da0ab7fd8f1270980e14",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "severity"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5922989ada4b8af7ec02",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "Total Tickets"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5e71edd42d25a6ed329b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "MTTR (Hours)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0bf2dd47a7d3dc622da6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "SLA Breach Rate %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

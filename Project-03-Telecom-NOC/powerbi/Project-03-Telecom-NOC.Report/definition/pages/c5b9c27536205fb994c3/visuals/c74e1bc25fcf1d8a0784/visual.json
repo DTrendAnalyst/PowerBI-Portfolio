@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "c74e1bc25fcf1d8a0784",
+  "position": {
+    "x": 491.25378984572609,
+    "y": 135.84951171711421,
+    "z": 1,
+    "height": 149.5716846178328,
+    "width": 300.51558652573749,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "staging_noc_tickets"
+                    }
+                  },
+                  "Property": "MTTR (Hours)"
+                }
+              },
+              "queryRef": "staging_noc_tickets.MTTR (Hours)",
+              "nativeQueryRef": "MTTR (Hours)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "staging_noc_tickets"
+                  }
+                },
+                "Property": "MTTR (Hours)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "36D"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4891d57a73d5670ec549",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "staging_noc_tickets"
+              }
+            },
+            "Property": "MTTR (Hours)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

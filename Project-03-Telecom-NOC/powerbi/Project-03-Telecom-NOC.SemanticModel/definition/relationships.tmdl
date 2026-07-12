@@ -1,0 +1,10 @@
+relationship 58e994b2-3c8d-414f-85ed-8673b1af703f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: staging_noc_tickets.created_at
+	toColumn: LocalDateTable_c011a480-34cb-4a91-9d8b-9f731add7fff.Date
+
+relationship 4fdf9c26-c439-4818-8367-8c332c301f19
+	joinOnDateBehavior: datePartOnly
+	fromColumn: staging_noc_tickets.resolved_at
+	toColumn: LocalDateTable_4d30a397-3133-40be-8652-7e702f2d21fa.Date
+
